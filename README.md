@@ -1,61 +1,48 @@
-# docker-xemu (Enhanced Fork)
+# docker-xemu
 
-Xbox emulator (xemu) with XLink Kai multiplayer and Passleader automation.
-
-## Features
-
-- **XLink Kai Integration** - Online multiplayer for system link games
-- **Passleader Automation** - Scripted gameplay with automated inputs
-- **CPU Rendering** - Works without GPU passthrough
-- **Web Interface** - Browser-based access via KasmVNC
-- Based on [LinuxServer.io docker-xemu](https://github.com/linuxserver/docker-xemu)
+Xbox emulator with XLink Kai multiplayer and automation. Fork of [linuxserver/docker-xemu](https://github.com/linuxserver/docker-xemu).
 
 ## Quick Start
 
-### 1. Download Required Files
-- **Xbox HDD Image** (3.6GB): [Google Drive](https://drive.google.com/drive/folders/10KqAo_bU0cdI_nOkcUG2paMmZ4phiBaY?usp=drive_link)
-- Place in `config/emulator/xbox_hdd.qcow2`
+**1. Download HDD image** (3.6GB): [Google Drive](https://drive.google.com/drive/folders/10KqAo_bU0cdI_nOkcUG2paMmZ4phiBaY?usp=drive_link)
+Place in `config/emulator/xbox_hdd.qcow2`
 
-### 2. Run Container
+**2. Run:**
 ```bash
 docker compose up -d
 ```
 
-### 3. Access
-- **Xemu Interface**: https://localhost:3001
-- **XLink Kai**: http://localhost:34522
-
-## Documentation
-
-- **[SETUP.md](SETUP.md)** - Complete setup guide with detailed instructions
-- **[CHANGELOG.md](CHANGELOG.md)** - Fork modifications and differences from upstream
+**3. Access:**
+- Xemu: https://localhost:3001
+- XLink Kai: http://localhost:34522
 
 ## Configuration
 
-Default ports:
-- `3000/3001` - Xemu web interface (HTTP/HTTPS)
+**Ports:**
+- `3000/3001` - Xemu (HTTP/HTTPS)
 - `34522` - XLink Kai web interface
-- `34523/UDP` - XLink Kai game traffic
+- `34523/UDP` - XLink Kai traffic
 
-See [SETUP.md](SETUP.md) for environment variables and advanced configuration.
+**Environment variables:**
+```yaml
+PUID=1000          # User ID
+PGID=1000          # Group ID
+TZ=Etc/UTC         # Timezone
+```
+
+See [docker-compose.yml](docker-compose.yml) for full config.
 
 ## What's Different?
 
 This fork adds:
-- XLink Kai container for online multiplayer
-- Passleader automation script (`passleader_v3.sh`)
+- XLink Kai for online multiplayer
+- Passleader automation (`passleader_v3.sh`)
 - Additional packages: `libusb-1.0`, `wmctrl`, `xdotool`
-- Improved configuration management
-- Setup documentation and troubleshooting
 
-See [CHANGELOG.md](CHANGELOG.md) for complete list of modifications.
+See [CHANGELOG.md](CHANGELOG.md) for complete modifications.
 
-## Support
+## Links
 
-- **Issues**: [GitHub Issues](https://github.com/Roasted-Codes/docker-xemu/issues)
-- **Upstream**: [linuxserver/docker-xemu](https://github.com/linuxserver/docker-xemu)
-- **xemu Docs**: [xemu.app/docs](https://xemu.app/docs/)
-
-## License
-
-Same as upstream LinuxServer.io docker-xemu project.
+- [Issues](https://github.com/Roasted-Codes/docker-xemu/issues)
+- [Upstream](https://github.com/linuxserver/docker-xemu)
+- [xemu Docs](https://xemu.app/docs/)

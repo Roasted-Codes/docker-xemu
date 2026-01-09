@@ -16,4 +16,4 @@ These files are included in the repository:
 - Place in this directory
 - Not included due to size
 
-See [SETUP.md](../../SETUP.md) for complete setup instructions.
+See [README.md](../../README.md) for setup instructions.
