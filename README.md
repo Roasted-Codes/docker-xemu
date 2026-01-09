@@ -4,8 +4,9 @@ Xbox emulator with XLink Kai multiplayer and automation. Fork of [linuxserver/do
 
 ## Quick Start
 
-**1. Download HDD image** (3.6GB): [Google Drive](https://drive.google.com/drive/folders/10KqAo_bU0cdI_nOkcUG2paMmZ4phiBaY?usp=drive_link)
-Place in `config/emulator/xbox_hdd.qcow2`
+**1. Download from [Google Drive](https://drive.google.com/drive/folders/10KqAo_bU0cdI_nOkcUG2paMmZ4phiBaY?usp=drive_link):**
+- `xbox_hdd.qcow2` (3.6GB) → `config/emulator/xbox_hdd.qcow2`
+- `halo2_r1e_xiso.iso` → `config/games/halo2_r1e_xiso.iso`
 
 **2. Run:**
 ```bash
