@@ -14,7 +14,7 @@ docker compose up -d
 ```
 
 **3. Access:**
-- Xemu: https://localhost:3001
+- Xemu: https://localhost:3000 (via ssh tunnel)
 - XLink Kai: http://localhost:34522
 
 ## Configuration
