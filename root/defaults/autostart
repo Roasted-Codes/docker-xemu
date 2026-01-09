@@ -1,4 +1,36 @@
 #!/bin/bash
 
+# -----------------------------------------------------------------------------
+# Xemu Configuration Management
+# -----------------------------------------------------------------------------
+# Problem: Xemu hardcodes its config location to ~/.local/share/xemu/xemu/xemu.toml
+#          We want to manage config in a cleaner location: /config/emulator/xemu.toml
+#
+# Solution: Create a symlink so both paths point to the same file
+#
+# What happens:
+# 1. Our managed config lives at: /config/emulator/xemu.toml (version controlled)
+# 2. Xemu expects config at: /config/.local/share/xemu/xemu/xemu.toml (default location)
+# 3. We symlink #2 -> #1 so xemu reads/writes our managed file
+#
+# Benefits:
+# - Single source of truth: /config/emulator/xemu.toml
+# - Xemu auto-saves work (writes to our file via symlink)
+# - Clean, distributable location for config
+# - No custom xemu binary needed
+# -----------------------------------------------------------------------------
+
+# Create xemu's default config directory structure
+mkdir -p /config/.local/share/xemu/xemu
+
+# Remove any existing file/symlink at xemu's default config location
+# (prevents errors if xemu already created a config there)
+rm -f /config/.local/share/xemu/xemu/xemu.toml
+
+# Create symlink: xemu's default location -> our managed config location
+# Now when xemu reads/writes ~/.local/share/xemu/xemu/xemu.toml, it actually
+# reads/writes /config/emulator/xemu.toml
+ln -sf /config/emulator/xemu.toml /config/.local/share/xemu/xemu/xemu.toml
+
 # Run xemu
 xterm -e /opt/xemu/AppRun

@@ -1,1 +1,13 @@
 .jenkins-external
+
+# Large files - distributed separately (see SETUP.md)
+*.qcow2
+*.iso
+
+# Runtime files
+config/.cache/
+config/.local/
+config/.dbus/
+config/.XDG/
+config/.Xresources
+config/.xsettingsd
