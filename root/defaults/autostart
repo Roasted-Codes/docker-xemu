@@ -23,6 +23,13 @@
 # Create xemu's default config directory structure
 mkdir -p /config/.local/share/xemu/xemu
 
+# Ensure xemu.toml is writable by the user running xemu (abc)
+# This fixes permission issues when the file was created with wrong ownership
+# Without this, xemu can read settings but cannot save changes
+if [ -f /config/emulator/xemu.toml ]; then
+    chown abc:abc /config/emulator/xemu.toml 2>/dev/null || true
+fi
+
 # Remove any existing file/symlink at xemu's default config location
 # (prevents errors if xemu already created a config there)
 rm -f /config/.local/share/xemu/xemu/xemu.toml
@@ -31,6 +38,17 @@ rm -f /config/.local/share/xemu/xemu/xemu.toml
 # Now when xemu reads/writes ~/.local/share/xemu/xemu/xemu.toml, it actually
 # reads/writes /config/emulator/xemu.toml
 ln -sf /config/emulator/xemu.toml /config/.local/share/xemu/xemu/xemu.toml
+
+# -----------------------------------------------------------------------------
+# Automation Script Launcher
+# -----------------------------------------------------------------------------
+# Launch passleader automation script in its own terminal window if it exists
+# This allows users to see the automation output and stop it with Ctrl+C
+if [ -f /config/emulator/passleader_v3.sh ]; then
+    echo "Launching passleader automation script in separate terminal..."
+    xterm -title "Passleader Automation" -geometry 120x30 -e bash /config/emulator/passleader_v3.sh &
+fi
+# -----------------------------------------------------------------------------
 
 # Run xemu
 xterm -e /opt/xemu/AppRun

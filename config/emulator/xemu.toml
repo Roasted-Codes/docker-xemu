@@ -1,1 +1,57 @@
-../.local/share/xemu/xemu/xemu.toml
+[general]
+show_welcome = false
+skip_boot_anim = true
+last_viewed_menu_index = 5
+
+[general.snapshots.shortcuts]
+f6 = 'Auto-Host-Lobby'
+
+[input]
+auto_bind = false
+background_input_capture = true
+gamepad_mappings = [
+    { gamepad_id = '000000004d6963726f736f6674205800'}
+    ]
+
+[input.bindings]
+port1_driver = 'usb-xbox-gamepad'
+port1 = 'keyboard'
+port2_driver = 'usb-xbox-gamepad'
+port3_driver = 'usb-xbox-gamepad'
+port4_driver = 'usb-xbox-gamepad'
+
+[display]
+renderer = 'NULL'
+
+[display.window]
+startup_size = '640x480'
+last_width = 1024
+last_height = 745
+
+[display.ui]
+hide_cursor = false
+use_animations = false
+fit = 'center'
+
+[display.debug.video]
+x_pos = -73
+y_pos = 116
+
+[audio]
+volume_limit = 0.0471957
+
+[net]
+enable = true
+backend = 'udp'
+
+[net.udp]
+bind_addr = '0.0.0.0:9968'
+remote_addr = 'localhost:34523'
+
+[sys.files]
+bootrom_path = '/config/emulator/mcpx_1.0.bin'
+flashrom_path = '/config/emulator/complex_4627.bin'
+eeprom_path = '/config/emulator/halo2-server-eeprom.bin'
+hdd_path = '/config/emulator/xbox_hdd.qcow2'
+dvd_path = '/config/games/halo2_r1e_xiso.iso'
+

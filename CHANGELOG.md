@@ -27,9 +27,28 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   - Documents required files and where to obtain them
   - Troubleshooting and configuration instructions
 
+- **Gameplay Automation** ([config/emulator/passleader_v3.sh](config/emulator/passleader_v3.sh))
+  - Automated input script for xemu gameplay
+  - Launches in separate terminal window on container start
+  - Waits for xemu, loads snapshot (F6), then automates B/A button presses
+  - Can be stopped with Ctrl+C in the automation terminal
+  - Optional - only runs if script is present in config/emulator/
+
+- **XLink Kai Integration** ([docker-compose.yml](docker-compose.yml#L41-L58))
+  - Added XLink Kai service for system link gaming over internet
+  - Connects to xemu via UDP tunneling (ports 9968/34523)
+  - Web interface accessible on port 34522
+  - Enables LAN multiplayer games over the internet
+  - Uses ich777/xlinkkaievolution Docker image
+
 ### Changed
 - **Dockerfile** - Added additional runtime dependencies for USB and automation support
 - **Startup Script** - Modified to manage xemu configuration via symlink instead of relying on default location
+- **Startup Script** - Added automatic file ownership fix for xemu.toml to ensure write permissions
+
+### Fixed
+- **Configuration Saving** - Fixed circular symlink issue that prevented xemu from saving settings
+- **File Permissions** - Automatically set correct ownership on xemu.toml at container startup
 
 ### Technical Details
 

@@ -108,6 +108,78 @@ All paths are automatically managed via symlink (see [CHANGELOG.md](CHANGELOG.md
 
 ---
 
+## Gameplay Automation (Optional)
+
+This setup includes an optional automation script (`passleader_v3.sh`) that automates gameplay inputs.
+
+### What it does:
+1. **Waits for xemu** - Automatically detects when xemu window appears
+2. **Loads snapshot** - Presses F6 to load saved state "Auto-Dedi-Lobby"
+3. **Automates inputs** - Loops pressing B and A buttons for gameplay automation
+
+### How to use:
+- The script launches **automatically** in a separate terminal window when the container starts
+- Watch the automation terminal for status messages
+- **Stop automation**: Press `Ctrl+C` in the "Passleader Automation" terminal window
+- **Disable automation**: Remove or rename `config/emulator/passleader_v3.sh`
+
+### Requirements:
+- Requires `wmctrl` and `xdotool` packages (already included in this fork)
+- Requires a snapshot named "Auto-Dedi-Lobby" configured in xemu.toml (F6 shortcut)
+- Script must be executable: `chmod +x config/emulator/passleader_v3.sh`
+
+The script is fully documented with detailed logging and error handling.
+
+---
+
+## XLink Kai (System Link Over Internet)
+
+This setup includes XLink Kai, which allows you to play LAN/system link games over the internet.
+
+### What is XLink Kai?
+XLink Kai tunnels Xbox system link traffic over the internet, enabling online multiplayer for games that only support LAN play.
+
+### How it works:
+1. **Xemu** connects to XLink Kai via UDP (port 9968 → 34523)
+2. **XLink Kai** tunnels your game traffic to other players over the internet
+3. **Players** connect to the same XLink Kai arena to find each other
+
+### Access XLink Kai:
+- **Web Interface**: http://localhost:34522
+- **Configure**:
+  - Set network interface (default: `eth0`)
+  - Join or create an arena
+  - Find other players in the same arena
+
+### xemu.toml Configuration:
+The networking settings in your `config/emulator/xemu.toml` are already configured:
+
+```toml
+[net]
+enable = true
+backend = 'udp'
+
+[net.udp]
+bind_addr = '0.0.0.0:9968'      # Xemu listens here
+remote_addr = '127.0.0.1:34523'  # Connects to XLink Kai
+```
+
+### Connecting to Other Players:
+1. Start xemu and XLink Kai containers: `docker-compose up`
+2. Access XLink Kai web interface: http://localhost:34522
+3. Join an arena (or create one)
+4. Other players join the same arena
+5. Start a system link game in xemu
+6. Players should see each other in-game
+
+### Troubleshooting XLink Kai:
+- **Can't access web interface**: Check port 34522 isn't blocked
+- **Players not seeing each other**: Ensure all players are in the same arena
+- **Connection issues**: Check firewall settings and NAT configuration
+- **XLink Kai logs**: `docker-compose logs xlinkkai`
+
+---
+
 ## Troubleshooting
 
 ### "Could not open file" errors

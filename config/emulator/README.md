@@ -9,7 +9,10 @@ These are already here:
 - `complex_4627.bin` - Xbox flash ROM (~1MB)
 - `halo2-server-eeprom.bin` - Xbox EEPROM (256 bytes)
 - `xemu.toml` - Xemu configuration
-- `passleader_v3.sh` - Helper script (if present)
+- `passleader_v3.sh` - **Gameplay automation script** (auto-runs on container start)
+  - Waits for xemu, loads snapshot (F6), automates B/A button presses
+  - Runs in separate terminal - stop with Ctrl+C
+  - See [SETUP.md](../../SETUP.md#gameplay-automation-optional) for details
 
 ## Files You Must Add ⚠️
 

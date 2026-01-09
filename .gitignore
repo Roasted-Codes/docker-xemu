@@ -11,3 +11,7 @@ config/.dbus/
 config/.XDG/
 config/.Xresources
 config/.xsettingsd
+config/.bash_history
+
+# XLink Kai runtime data
+config/xlinkkai/
