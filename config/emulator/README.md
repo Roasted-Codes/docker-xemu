@@ -1,34 +1,19 @@
-# Xemu Emulator Files
+# Emulator Files
 
-This directory contains all files needed for xemu to run.
+## Included Files
 
-## Files Included in Repository ✅
-
-These are already here:
-- `mcpx_1.0.bin` - Xbox MCPX boot ROM (512 bytes)
+These files are included in the repository:
+- `mcpx_1.0.bin` - Xbox boot ROM (512B)
 - `complex_4627.bin` - Xbox flash ROM (~1MB)
-- `halo2-server-eeprom.bin` - Xbox EEPROM (256 bytes)
+- `halo2-server-eeprom.bin` - Xbox EEPROM (256B)
 - `xemu.toml` - Xemu configuration
-- `passleader_v3.sh` - **Gameplay automation script** (auto-runs on container start)
-  - Waits for xemu, loads snapshot (F6), automates B/A button presses
-  - Runs in separate terminal - stop with Ctrl+C
-  - See [SETUP.md](../../SETUP.md#gameplay-automation-optional) for details
+- `passleader_v3.sh` - Automation script (optional)
 
-## Files You Must Add ⚠️
+## Required Download
 
-Download separately - see [SETUP.md](../../SETUP.md):
+**xbox_hdd.qcow2** (3.6GB) - Xbox hard disk image
+- Download from [Google Drive](https://drive.google.com/drive/folders/10KqAo_bU0cdI_nOkcUG2paMmZ4phiBaY?usp=drive_link)
+- Place in this directory
+- Not included due to size
 
-- `xbox_hdd.qcow2` - Xbox hard disk image (~3.6GB) **[REQUIRED]**
-- `*.iso` - Game disc images (optional)
-
-## Why is the disk image excluded?
-
-The `.qcow2` disk image is excluded from git because:
-1. It's 3.6GB - too large for git repositories
-2. GitHub has a 100MB file size limit
-3. Allows you to use your own custom Xbox setup
-4. Can be updated independently without bloating git history
-
-Place your `xbox_hdd.qcow2` file in this directory before running the container.
-
-See [SETUP.md](../../SETUP.md) for download links and setup instructions.
+See [SETUP.md](../../SETUP.md) for complete setup instructions.

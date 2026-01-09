@@ -45,9 +45,7 @@ Due to size, these files are **not included** and must be downloaded separately:
 ### Where to Get the Disk Image
 
 **Option 1: Download the pre-configured image**
-- Google Drive: [Your link here]
-- MEGA: [Your link here]
-- Dropbox: [Your link here]
+- [Google Drive](https://drive.google.com/drive/folders/10KqAo_bU0cdI_nOkcUG2paMmZ4phiBaY?usp=drive_link) - Pre-configured Xbox HDD image (3.6GB)
 - Place downloaded file in `config/emulator/xbox_hdd.qcow2`
 
 **Option 2: Use your own disk image**
