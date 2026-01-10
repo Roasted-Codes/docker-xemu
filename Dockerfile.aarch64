@@ -24,7 +24,7 @@ RUN \
     libusb-1.0-0 \
     wmctrl \
     xdotool && \
-  DOWNLOAD_URL=$(curl -sX GET "https://api.github.com/repos/xemu-project/xemu/releases/latest" \
+  DOWNLOAD_URL=$(curl -sX GET "https://api.github.com/repos/xemu-project/xemu/releases/tags/v0.8.76" \
     | awk -F '(": "|")' '/browser.*aarch64.AppImage/ && !/.*dbg.*/ {print $3}') && \
   curl -o \
     /tmp/xemu.app -L \
