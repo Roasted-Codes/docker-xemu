@@ -47,3 +47,6 @@ See [CHANGELOG.md](CHANGELOG.md) for complete modifications.
 - [Issues](https://github.com/Roasted-Codes/docker-xemu/issues)
 - [Upstream](https://github.com/linuxserver/docker-xemu)
 - [xemu Docs](https://xemu.app/docs/)
+
+## Credits
+- Thanks to MVC and Real Ones + Xbox7887 for the initial H2 mod to make this possible.
